@@ -21,9 +21,5 @@ class ExamsSeeder extends Seeder
                     'user_id'  => $user_id->random(1)->id
              ]);
         });
-
-        //dd($topic_id);
-        	
-        // });
     }
 }

@@ -18,10 +18,10 @@ class CreateExamsTable extends Migration
             $table ->string('name')->unique();
             $table ->tinyInteger('quantity');
             $table ->integer('time');
-            $table ->integer('user_id')->default(0);
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table ->integer('topic_id')->default(0);
-            // $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
+            $table ->integer('user_id')->unsigned();
+            $table ->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table ->integer('topic_id')->unsigned();
+            $table ->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
             $table ->timestamps();
         });
     }

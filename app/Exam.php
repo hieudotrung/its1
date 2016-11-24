@@ -9,11 +9,13 @@ class Exam extends Model
     protected $fillable = [
         'name', 'quanlity', 'time', 'user_id', 'topic_id'
     ];
-    public function topic(){
-    	return $this->belongsTo('App\Topic');
+    public function topic()
+    {
+        return $this->belongsTo('App\Topic');
     }
-    public function user_exam(){
-    	return $this->belongsTo('App\User');
+    public function user_exam()
+    {
+        return $this->belongsTo('App\User');
     }
 }
 

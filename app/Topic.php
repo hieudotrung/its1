@@ -10,7 +10,8 @@ class Topic extends Model
     	'name_topic'
     ];	
     
-    public function exams(){
-    	return $this->hasMany(Exam::class);
+    public function exams()
+    {
+    	return $this->hasMany('App\Exam');
     }
 }
