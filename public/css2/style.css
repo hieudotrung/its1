@@ -1,0 +1,18 @@
+header{
+	width: 1100px;
+	height: 40px;
+	border: 1px solid #666666;
+	background-image:url(1.png);
+}
+section{
+	margin-top:5px;
+	width: 1100px;
+	height: 1000px;
+	border: 1px solid #666666;
+}
+#sile_left{
+	width: 226px;
+	height:500px;
+	background-image:url(side.png);
+
+}

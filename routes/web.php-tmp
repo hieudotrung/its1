@@ -9,20 +9,20 @@
 | by your application. Just tell Laravel the URIs it should respond
 | to using a Closure or controller method. Build something great!
 |
-*/
+ */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+		return view('welcome');
+	});
 
 Route::get('trangchu', function () {
-    return view('layout/index_backend');
-});
+		return view('layout/index_backend');
+	});
 
-route::get('a/{thanhvien}', function($thanhvien){
-	echo "thanhvien thu nhat". $thanhvien;
-});
+route::get('a/{thanhvien}', function ($thanhvien) {
+		echo "thanhvien thu nhat".$thanhvien;
+	});
 
-route:: get('danhsachthanhvien', function(){
-	return view('user.danhsachthanhvien');
-});
+route::get('danhsachthanhvien', function () {
+		return view('user.danhsachthanhvien');
+	});
