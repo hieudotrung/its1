@@ -20,9 +20,10 @@ Route::get('trangchu', function () {
 });
 
 route::get('a/{thanhvien}', function($thanhvien){
-	echo "thanhvien thu nhat". $thanhvien;
+    echo "thanhvien thu nhat". $thanhvien;
 });
 
 route:: get('danhsachthanhvien', function(){
-	return view('user.danhsachthanhvien');
+    return view('user.danhsachthanhvien');
 });
+route:: resource('reposi','UserController@index');
