@@ -28,6 +28,14 @@ class User extends Authenticatable
     ];
     public function User_exams()
     {
-        return $this->hasMany(Exams::class);
+        return $this->hasMany('App\Exam');
+    }
+    public function news_user() 
+    {
+        return $this->hasMany('App\News');
+    }
+    public function result_user() 
+    {
+        return $this->hasMany('App\User');
     }
 }

@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker)     {
+$factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
     return [
         'username'       => $faker->name,
@@ -35,5 +35,37 @@ $factory->define(App\Exam::class, function (Faker\Generator $faker) {
         'time'     => $faker->randomElement([45,10,15]),
         'user_id'  => 1,
         'topic_id' => 1
+    ];
+});
+
+$factory->define(App\News::class, function(Faker\Generator $faker) {
+    return [
+        'title'    => $faker->title,
+        'content'  => $faker->text,
+        'topic_id' => 1,
+        'user_id'  => 1,
+    ];
+});
+
+$factory->define(App\Question::class,function(Faker\Generator $faker) {
+    return [
+        'content_question' => $faker->Text,
+        'exam_id'          => 1
+    ];
+});
+
+$factory->define(App\Answer::class, function (Faker\Generator $faker) {
+    return [
+        'content'    => $faker->Text,
+        'is_correct' => $faker->randomElement([0,1])
+    ];
+});
+
+$factory->define(App\Comment::class,function (Faker\Generator $faker) {
+    return [
+        'user_id' => 1,
+        'news_id' => 1,
+        'title'   => $faker->title,
+        'content' => $faker->Text
     ];
 });
