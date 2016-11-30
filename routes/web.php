@@ -23,7 +23,9 @@ route::get('a/{thanhvien}', function($thanhvien){
     echo "thanhvien thu nhat". $thanhvien;
 });
 
-route:: get('danhsachthanhvien', function(){
-    return view('user.danhsachthanhvien');
-});
-route:: resource('reposi','UserController@index');
+Route::get('user', 'UserController@index')->name('backend.user.index');
+Route::get('user/create', 'UserController@create')->name('backend.user.create');
+Route::post('user', 'UserController@store')->name('backend.user.store');
+Route::get('user/edit/{id}', 'UserController@edit')->name('backend.user.edit');
+Route::put('user/{id}', 'UserController@update')->name('backend.user.update');
+route::get('user/delete/{id}','UserController@destroy')->name('backend.user.destroy');

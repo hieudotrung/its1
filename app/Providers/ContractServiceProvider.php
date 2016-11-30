@@ -10,7 +10,11 @@ class ContractServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             \App\Contracts\Repositories\UserRepository::class,
-            \App\Repositories\Eloquent\UsertRepositoryEloquent::class
+            \App\Repository\Eloquent\UserRepositoryEloquent::class
+        );
+        $this->app->singleton(
+            \App\Contracts\Repositories\TopicRepository::class,
+            \App\Repository\Eloquent\TopicRepositoryEloquent::class
         );
     }
 
@@ -18,7 +22,12 @@ class ContractServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             \App\Contracts\Services\UserService::class,
-            \App\Services\Jobs\UserServiceJob::class
+            \App\Services\Jobs\UserJob::class
+        );
+
+        $this->app->singleton(
+            \App\Contracts\Services\TopicService::class,
+            \App\Services\Jobs\TopicJob::class
         );
     }
 }

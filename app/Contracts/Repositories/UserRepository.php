@@ -2,15 +2,9 @@
 
 namespace App\Contracts\Repositories;
 
-interface UserRepository
+interface UserRepository extends AbstractRepository
 {
-    public function getAll();
+	public function filter(array $data, $limit = 15, $fields = ['*']);
 
-    public function getById($id);
-
-    public function create(array $attribute);
-
-    public function update($id, array $attribute);
-
-    public function delete($id);
+	public function getList(array $data, $limit = 15, $field = ['*']);
 }

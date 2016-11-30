@@ -5,40 +5,35 @@ namespace App\Repository\Eloquent;
 use App\User;
 use App\Contracts\Repositories\UserRepository;
 
-class UserRepositoryEloquent implements UserRepository
+class UserRepositoryEloquent extends AbstractRepositoryEloquent implements UserRepository
 {
-    private $model;
-
-    public function __construct(User $model){
-        $this->model = $model;
+    public function __construct(User $model)
+    {
+        parent::__construct($model);
     }
 
-    public function getAll()
+    public function filter(array $data, $limit = 15, $fields = ['*'])
     {
-        $data = $this->model->where('id','<',10)->get();
-        return view('backend.user.list_user', compact('data'));
+        $query = $this->newQuery();
+
+        if (isset($data['name']) && $data['name']) {
+            $query->orWhere('name', $data['name']);
+        }
+
+        if (isset($data['keyword']) && $data['keyword']) {
+            $query->orWhere('username', $data['keyword']);
+            $query->orWhere('email', $data['keyword']);
+        }
+
+        return $query->orderBy('id', 'DESC')->paginate($limit, $fields);
     }
 
-    public function getById($id)
+    public function getList(array $data, $limit = 15, $fields = ['*'])
     {
-        return $this->findById($id);
-    }
-
-    public function create(array $attributes)
-    {
-        return $this->model->create($attribute);
-    }
-
-    public function update($id, array $attributes)
-    {
-        $a = $this->model->findOrFail($id);
-        $a->update($attributes);
-        return $a;
-    }
-
-    public function delete($id)
-    {
-        $this->getById($id)->delete($id);
-        return true;
+        if (isset($data['filter'])) {
+            return $this->filter($data, $limit, $fields);
+        } else {
+            return $this->paginate($limit, $fields);
+        }
     }
 }

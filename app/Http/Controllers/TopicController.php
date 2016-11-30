@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contracts\Repositories\TopicRepository;
+use App\Contracts\Services\TopicService;
+use App\Http\Controllers\Controller;
 
 class TopicController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $topics;
+
+    public function __construct(Request $request)
+    {
+        $this->topics = $topics;
+    }
     public function index()
     {
-        //
+        // $data['topics'] = $this->topics->all();
+        // return view('backend.topic.index');
     }
 
     /**

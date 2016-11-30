@@ -11,28 +11,24 @@
     <link href="css/sb-admin.css" rel="stylesheet">
     <link href="css/plugins/morris.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
 </head>
 <body>
 <div class=" container-fluid">
     <div id="wrapper">
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-             @include('tainguyen/nav');
-             @include('tainguyen/side-nav');
+            @include('tainguyen/nav')
+            @include('tainguyen/side-nav')
         </nav>
         <div id="page-wrapper">
             @yield('noidung')
         </div>
     </div>
 </div>
-    <!-- /#wrapper -->
-    <!-- jQuery -->
+
     <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <!-- Morris Charts JavaScript -->
-  
-    
-
 </body>
-
 </html>

@@ -2,42 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Contracts\Services\UserService;
 use App\Contracts\Repositories\UserRepository;
 
 class UserController extends Controller
 {
-    protected $user;
-    public function __construct(UserRepository $user)
+    public function __construct(UserRepository $users)
     {
-        $this->user = $user;
+        $this->users = $users;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->user->getAll(); 
+        $data['users'] = $this->users->paginate(10);
+
+        return view('backend.user.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('backend.user.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(UserService $service, Request $request)
     {
-        //
+        $data = $request->all();
+
+        $service->store($data);
+
+        return redirect()->route('backend.user.index');
     }
 
     /**
@@ -59,7 +55,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['user'] = $this->users->findOrFail($id);
+
+        return view('backend.user.update', $data);
     }
 
     /**
@@ -69,9 +67,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserService $service, Request $request, $id)
     {
-        //
+        $user = $this->users->findOrFail($id);
+
+        $data = $request->all();
+
+        $service->update($user, $data);
+        return redirect()->route('backend.user.index');
     }
 
     /**
@@ -80,8 +83,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserService $service, $id)
     {
-        //
+        $user = $this->users->findOrFail($id);
+        
+        try {
+            $service->delete($user);
+            $message = "Ban da xoa thanh cong";
+        } catch (Exception $e) {
+            $message = 'Xoa that bai';
+        }
+       
+
+        return redirect()->route('backend.user.index');
     }
 }
