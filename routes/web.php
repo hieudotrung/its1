@@ -11,18 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('trangchu', function () {
-    return view('layout/index_backend');
-});
-
-route::get('a/{thanhvien}', function($thanhvien){
-	echo "thanhvien thu nhat". $thanhvien;
-});
-
-route:: get('danhsachthanhvien', function(){
-	return view('user.danhsachthanhvien');
-});
+Route::resource('user', 'UserController');
