@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('admin', function(){
+	return view('admin.admin_template');
+});
+
 Route::get('trangchu', function () {
     return view('layout/index_backend');
 });
