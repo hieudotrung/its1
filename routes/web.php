@@ -11,4 +11,10 @@
 |
 */
 
+
+
+Route::get('login','LoginController@login')->name('backend.login');
+Route::post('login','LoginController@postLogin')->name('backend.postLogin');
+Route::post('logout','LoginController@logout')->name('backend.logout');
+
 Route::resource('user', 'UserController');
