@@ -1,12 +1,12 @@
-@extends('layout.index_backend')
-@section('noidung')
+@extends('admin.admin_template')
+@section('content')
 <style>
 #navbar{
 	margin-top:50px;}
 #tbl-first-row{
 	font-weight:bold;}
 	#logout{
-	padding-right:30px;}
+	padding-right:30px;}	
 </style>
 <body>
     <div id="navbar" class="row">
