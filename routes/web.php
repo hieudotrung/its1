@@ -10,15 +10,9 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
-
-
-Route::get('login','LoginController@login')->name('backend.login');
-Route::post('login','LoginController@postLogin')->name('backend.postLogin');
-Route::get('logout','LoginController@logout')->name('backend.logout');
-
-
-Route::group(['middleware'=>'auth'], function(){
-	Route::resource('user', 'UserController');
+Route::get('login', ['as' => 'backend.login', 'uses' => 'LoginController@login']);
+Route::post('login', ['as' => 'backend.postLogin', 'uses' => 'LoginController@postLogin']);
+Route::get('logout', ['as' => 'backend.logout', 'uses' => 'LoginController@logout']);
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('user', 'UserController');
 });
-
