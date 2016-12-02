@@ -117,7 +117,7 @@
             <li class="user-header">
               <img src="{{ asset("/bower_components/AdminLTE/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
               <p>
-                Alexander Pierce - Web Developer
+                {!!Auth::user()->username!!} - Web Developer
                 <small>Member since Nov. 2012</small>
               </p>
             </li>
