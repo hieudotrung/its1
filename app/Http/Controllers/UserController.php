@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 use App\Http\Controllers\Controller;
 use App\Contracts\Repositories\UserRepository;
+use App\Contracts\Services\UserService;
+use App\Http\Requests\User\UserRequest;
 
 class UserController extends Controller
 {
@@ -37,9 +40,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserService $userService, UserRequest $userRequest)
     {
-        
+        $userService->store($userRequest->all());
+        $userRequest->session()->flash('message', trans('backend.user.add-new'));
+        return redirect()->route('user.index');
     }
 
     /**
@@ -61,7 +66,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.user.update');
     }
 
     /**

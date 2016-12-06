@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \App::setLocale('vi');
+
     }
 
     /**
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(
+            \App\Contracts\Services\UserService::class,
+            \App\Services\Jobs\UserServiceJob::class
+        );
     }
 }

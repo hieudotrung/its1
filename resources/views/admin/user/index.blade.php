@@ -1,9 +1,14 @@
 @extends('admin.app')
 @section('title_post')
 <h3><strong>User Management</strong></h3>
+<div class="alert alert-info alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+    <strong>Notifications!</strong> {{ Session::get('message') }}.
+</div>
 @endsection
 @section('content')
 <a href="{{route('user.create')}}" class="btn btn-success">Add New</a>
+
 <table class="table table-hover table-responsive table-striped">
     <thead>
         <tr>
