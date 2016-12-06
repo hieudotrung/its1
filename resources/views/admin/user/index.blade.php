@@ -17,18 +17,18 @@
     <tbody>
         @foreach($users as $item)
             <tr>
-                <td>{{$item->id}}</td>
-                <td>{{$item->username}}</td>
-                <td>{{$item->email}}</td>
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->username }}</td>
+                <td>{{ $item->email }}</td>
                 <td>
-                    @if($item->is_admin ==1)
+                    @if($item->is_admin == 1)
                         <span style="color:red">Admin</span>
                     @else
                         <span>Member</span>
                     @endif
                 </td>
-                <td class="text-center"><a href="{{route('user.edit',$item->id)}}"><span class="glyphicon glyphicon-pencil"></span>  Edit</a></td>
-                <td class="text-center"><a href="{{route('user.destroy',$item->id)}}" onclick="confirm('Do you want to delete this?')"><span class="glyphicon glyphicon-trash"></span>Delete</a></td>
+                <td class="text-center"><a href="{{ route('user.edit', $item->id) }}"><span class="glyphicon glyphicon-pencil"></span>  Edit</a></td>
+                <td class="text-center"><a href="{{ route('user.destroy', $item->id) }}" onclick="confirm('Do you want to delete this?')"><span class="glyphicon glyphicon-trash"></span>Delete</a></td>
             </tr>
         @endforeach
     </tbody>

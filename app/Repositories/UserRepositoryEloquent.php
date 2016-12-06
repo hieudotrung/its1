@@ -7,8 +7,8 @@ use App\User;
 
 class UserRepositoryEloquent extends AbstractRepositoryEloquent implements UserRepository
 {
-    public function __construct(User $model)
+    public function __construct(User $userModel)
     {
-        parent::__construct($model);
+        parent::__construct($userModel);
     }
 }
