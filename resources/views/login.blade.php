@@ -22,7 +22,7 @@
                         <td>
                             <span class="form_label">Username:</span>
                             <span class="form_item">
-                                <input type="text" name="txtUser" required class="textbox" />
+                                <input type="text" name="txtUser" required class="textbox" value="{{ old('txtUser') }}"/>
                             </span><br />
                             <span class="form_label">Password:</span>
                             <span class="form_item">

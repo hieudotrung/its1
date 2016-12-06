@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Contracts\Repositories\UserRepository;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $userRepository;
+
+    public function __construct(UserRepository $user)
+    {
+        $this->userRepository = $user;
+    }
+
     public function index()
     {
-        return view('admin.admin_template');
+        $users = $this->userRepository->paginate();
+        return view('admin.user.index', compact('users'));
     }
 
     /**
@@ -23,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -34,7 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
